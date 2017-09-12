@@ -7,19 +7,24 @@ import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 
 //Import Components will use
-import {WelcomeComponent} from './welcome.component';
-import {AboutComponent} from './about.component';
-import {ContactComponent} from './contact.component';
+import {WelcomeComponent} from './Public/Welcome/welcome.component';
+import {AboutComponent} from './Public/About/about.component';
+import {LoginComponent} from './Public/Login/login.component';
+//Imports modules
+import {AdminModule} from './Admin/admin.module';
+import {PublicModule} from './Public/public.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     AboutComponent,
-    ContactComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    AdminModule,
+    PublicModule,
     AppRoutingModule
   ],
   providers: [],
