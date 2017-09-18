@@ -10,18 +10,18 @@ const routes: Routes = [
         path: 'admin',  component: AdminComponent ,canActivate:[AuthGuardService],
         children:[
             {
-                path:'',
+                path:' ',
                 canActivate: [AuthGuardService],
                 component:InformationComponent,
             },
             {
                     path:'account',
-                    canActivate: [AuthGuardService],data:{rolRequired:['admin']},
+                    canActivate: [AuthGuardService],data:{rolRequired:'admin'},
                     component:AccountComponent
             },
             {
                     path:'information',
-                    canActivate: [AuthGuardService],data:{rolRequired:['user']},
+                    canActivate: [AuthGuardService],data:{rolRequired:'user'},
                     component:InformationComponent
             }
             
@@ -31,7 +31,7 @@ const routes: Routes = [
   ];
   
 @NgModule({
-    imports:[RouterModule.forChild(routes)],
+    imports:[RouterModule.forRoot(routes)],
     exports:[RouterModule]
 })
 

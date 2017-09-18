@@ -16,7 +16,6 @@ import {JwtHelper} from 'angular2-jwt';
 export class AuthService{
 
     userProfile:any;
-    requestScopes:string='openid profile';
 
     jwtHelper: JwtHelper = new JwtHelper();
 
@@ -25,9 +24,8 @@ export class AuthService{
         domain: 'prontoayudatest.auth0.com',
         responseType: 'token id_token',
         audience: 'https://prontoayudatest.auth0.com/userinfo',
-        redirectUri: 'http://localhost:4200/admin',  
-        //audience:'https://prontoayudatest.auth0.com/api/v2/',    
-        scope: this.requestScopes
+        redirectUri: 'http://localhost:4200/admin',    
+        scope: 'openid profile'
     });
 
     constructor(public router:Router){}
@@ -39,7 +37,6 @@ export class AuthService{
     
        handleAuthentication(): void {
         this.auth0.parseHash((err, authResult) => {
-         //console.log(authResult);
           if (authResult && authResult.accessToken && authResult.idToken) {
             window.location.hash = '';
             this.setSession(authResult);

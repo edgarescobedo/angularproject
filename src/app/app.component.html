@@ -4,7 +4,7 @@
   <a routerLink ="/welcome">Welcome</a>
   <a routerLink="/about">About</a>
   <a routerLink="/login">Login</a>
-  <a routerLink="/admin">Admin</a>
+  <a routerLink="/admin" *ngIf="authservice.isAuthenticated()===true">Admin</a>
 </nav>
 <router-outlet></router-outlet>
 
