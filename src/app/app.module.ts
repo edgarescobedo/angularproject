@@ -14,6 +14,7 @@ import {LoginComponent} from './Public/Login/login.component';
 import {AdminModule} from './Admin/admin.module';
 import {PublicModule} from './Public/public.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import {PublicModule} from './Public/public.module';
     AdminModule,
     PublicModule,
     AppRoutingModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

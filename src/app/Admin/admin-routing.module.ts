@@ -11,17 +11,17 @@ const routes: Routes = [
         children:[
             {
                 path:'',
-                canActivateChild: [AuthGuardService],
+                canActivate: [AuthGuardService],
                 component:InformationComponent,
             },
             {
                     path:'account',
-                    canActivateChild: [AuthGuardService],
+                    canActivate: [AuthGuardService],data:{rolRequired:['admin']},
                     component:AccountComponent
             },
             {
                     path:'information',
-                    canActivateChild: [AuthGuardService],
+                    canActivate: [AuthGuardService],data:{rolRequired:['user']},
                     component:InformationComponent
             }
             

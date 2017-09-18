@@ -17,22 +17,24 @@ export class LoginComponent{
     }
 
     setMessage(){
-        this.message='Logged-'+(this.authservice.isLogged?'in':'out');
+        this.message='Logged-'+(this.authservice.isAuthenticated()?'in':'out');
     }
 
     login():void{
         this.message="Trying to log in";
 
-        this.authservice.login().subscribe(
+        /*this.authservice.login().subscribe(
             ()=>{
                 let redirect = this.authservice.redirectUrl? this.authservice.redirectUrl:'../../admin';
 
                 this.router.navigate([redirect]);
             }
-        )
+        )*/
+        this.authservice.login();
     }
 
     logout():void{
+        this.message="Trying to log in";
         this.authservice.logout();
         this.setMessage();
     }

@@ -3,6 +3,6 @@
     {{message}}
 </p>
 <p>
-    <button (click)="login()">Login</button>
+    <button (click)="login()" *ngIf="authservice.isAuthenticated" >Login</button>
     <button (click)="logout()">Logout</button>
 </p>

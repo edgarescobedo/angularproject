@@ -10,20 +10,32 @@ export class AuthGuardService implements CanActivate,CanActivateChild{
 
     canActivate(route:ActivatedRouteSnapshot,state:RouterStateSnapshot):boolean{
        let url:string=state.url;
-       return this.checkLogin(url);
+
+       const rolRequired = (route.data as any).rolRequired;
+       
+       return this.checkLogin(url,rolRequired);
     }
 
     canActivateChild(route:ActivatedRouteSnapshot,state:RouterStateSnapshot):boolean{
-        return this.canActivate(route,state);
+
+        const rolRequired = (route.data as any).rolRequired;
+        var user_rol=localStorage.getItem('rol_user');
+        if(this.authService.isAuthenticated() && user_rol === rolRequired){return true;}
+
+        this.router.navigate(['/welcome']);
+
+        return false;
      }
 
-    checkLogin(url:string):boolean{
-        if(this.authService.isLogged){return true;}
 
-        this.authService.redirectUrl=url
+    checkLogin(url:string,rol:string):boolean{
+
+        if(this.authService.isAuthenticated()){return true;}
 
         this.router.navigate(['/login']);
         
         return false;
     }
+
+
 }
